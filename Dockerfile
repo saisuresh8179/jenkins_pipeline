@@ -1,4 +1,6 @@
-FROM nginx:alpine
-LABEL maintainer address "naveen"
-COPY ./ /usr/share/nginx/html
+FROM ubuntu:alpine
+RUN sudo apt update \ 
+  && sudo apt install apache2 -y
+COPY index.html /var/www/html
 EXPOSE 80
+CMD ["apachectl","-D","FOREGROUND"]
