@@ -26,7 +26,7 @@ pipeline {
         stage ('run container') {
             steps {
                 sh '''
-                    docker stop static_html_container && docker rm stattic_html_container
+                    docker stop static_html_container && docker rm static_html_container
                     docker run --name static_html_container -d -p 81:80 static_html:latest
                    '''
             }
