@@ -13,12 +13,14 @@ pipeline {
         }
         stage ('run container') {
             steps {
-                withDockerRegistry(credentialsId: 'docker-hub') {
+                script {
+                    withDockerRegistry(credentialsId: 'docker-hub') {
                     sh '''
                         docker tag static_html saisuresh1/static_html:0.0.1.RELEASE
                         docker push saisuresh1/static_html:0.0.1.RELEASE
                         '''
-                } 
+                    } 
+                }    
             }
         }
         stage ('run container') {
