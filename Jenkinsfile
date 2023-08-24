@@ -25,6 +25,7 @@ pipeline {
             steps {
                 sh '''
                     docker run --name webapps_java_container -d -p 8081:8080 static_html:latest
+                   '''
             }
         }
     }
