@@ -8,7 +8,7 @@ pipeline {
         }
         stage('run image') {
             steps {
-                sh ''' docker build -t static_html '''
+                sh ''' docker build -t static_html . '''
             }
         }
         stage ('run push') {
