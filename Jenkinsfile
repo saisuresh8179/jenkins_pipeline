@@ -8,15 +8,15 @@ pipeline {
         }
         stage('run image') {
             steps {
-                sh ''' docker build -t webapp_java . '''
+                sh ''' docker build -t static_html '''
             }
         }
         stage ('run container') {
             steps {
                 withDockerRegistry(credentialsId: 'docker-hub') {
                     sh '''
-                        docker tag webapp_java saisuresh1/webapp_java:0.0.1.RELEASE
-                        docker push saisuresh1/webapp_java:0.0.1.RELEASE
+                        docker tag static_html saisuresh1/static_html:0.0.1.RELEASE
+                        docker push saisuresh1/static_html:0.0.1.RELEASE
                         '''
                 } 
             }
@@ -24,7 +24,7 @@ pipeline {
         stage ('run container') {
             steps {
                 sh '''
-                    docker run --name webapps_java_container -d -p 8001:8000 webapp_java:latest
+                    docker run --name webapps_java_container -d -p 8081:8080 static_html:latest
             }
         }
     }
