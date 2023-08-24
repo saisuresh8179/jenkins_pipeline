@@ -11,7 +11,7 @@ pipeline {
                 sh ''' docker build -t static_html '''
             }
         }
-        stage ('run container') {
+        stage ('run push') {
             steps {
                 script {
                     withDockerRegistry(credentialsId: 'docker-hub') {
