@@ -6,17 +6,17 @@ pipeline {
                 git 'https://github.com/saisuresh8179/jenkins_pipeline.git'
             }        
         }
-        stage ('quality_testing') {
+        stage('SonarQube Analysis') {
             steps {
+                // Run the SonarQube scanner
                 script {
+                    def scannerHome = tool 'SonarQubeScanner'
                     withSonarQubeEnv(credentialsId: 'token') {
-                        sh ''' sonar-scanner -Dsonar.projectKey=html_testing -Dsonar.sources=. -Dsonar.host.url=http://3.238.88.170:9000 -Dsonar.token=sqp_ef94ab9c5230519473c4cf0bfbcda4b14a32cf2c
-                           '''
-                     }
+                        sh ''' ${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=html_testing -Dsonar.sources=. -Dsonar.host.url=http://35.175.121.197:9000 -Dsonar.token=sqp_4642f58658a92397083b0603f28c6a60ad0f077d'''
+                    }
                 }
             }
         }
-        
         // stage('run image') {
         //     steps {
         //         sh ''' docker build -t static_html . '''
