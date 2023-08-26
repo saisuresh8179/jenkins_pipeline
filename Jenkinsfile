@@ -10,7 +10,7 @@ pipeline {
             steps {
                 // Run the SonarQube scanner
                 script {
-                    def scannerHome = tool 'SonarQubeScanner'
+                    def scannerHome = tool 'SonarQube Scanner for Jenkins'
                     withSonarQubeEnv(credentialsId: 'token') {
                         sh ''' ${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=html_testing -Dsonar.sources=. -Dsonar.host.url=http://35.175.121.197:9000 -Dsonar.token=sqp_4642f58658a92397083b0603f28c6a60ad0f077d'''
                     }
