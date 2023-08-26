@@ -6,13 +6,13 @@ pipeline {
                 git 'https://github.com/saisuresh8179/jenkins_pipeline.git'
             }        
         }
-        stage ('quality_testing') {
-            steps {
-                sh '''
-                    sonar-scanner -Dsonar.projectKey=html_testing -Dsonar.sources=. -Dsonar.host.url=http://3.238.88.170:9000 -Dsonar.token=sqp_ef94ab9c5230519473c4cf0bfbcda4b14a32cf2c
-                   '''
-            }
-        }
+        // stage ('quality_testing') {
+        //     steps {
+        //         sh '''
+        //             sonar-scanner -Dsonar.projectKey=html_testing -Dsonar.sources=. -Dsonar.host.url=http://3.238.88.170:9000 -Dsonar.token=sqp_ef94ab9c5230519473c4cf0bfbcda4b14a32cf2c
+        //            '''
+        //     }
+        // }
         
         // stage('run image') {
         //     steps {
