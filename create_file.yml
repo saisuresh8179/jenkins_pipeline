@@ -1,0 +1,33 @@
+############create a empty file################
+---
+- name: Create a file in all Host Nodes
+  hosts: all
+  remote_user: ansible
+  tasks:
+    - name: create a file empty file using touch command
+      file:
+        path: /home/ansible/hello.txt
+        state: touch
+
+---
+#############copy to content to destnation file###############
+---
+- name: copy content to file for all Host Nodes
+  hosts: all
+  tasks:
+    - name: copy the content using COPY module
+      copy: content="this is saisuresh" dest="/home/ansible/hello.txt"
+    
+#############install the httpd webserber on webservers group ##########
+---
+- name: install the httpd websever package on websevers group
+  hosts: WBSERVERS
+  tasks:
+    - name: install httpd webserver package using yum module
+      yum:
+        state: latest
+        name: httpd
+    - name: start the httpd server
+      service :
+        name: httpd
+        state: started
